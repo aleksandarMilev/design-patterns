@@ -1,27 +1,16 @@
 ﻿namespace DesignPatterns.StartUp
 {
-    using Creational.Singleton;
+    using Creational.Singleton.Example;
 
     internal class Program
     {
         private static void Main()
         {
-            //Creational
-            //1
-            var mySingletonClass = GetSingleton<MyTestClass>();
+            //1. Singleton
+            //var singleton = MySingletonClass.GetSingleton();
+            //Console.WriteLine(singleton);
+
+            //2.
         }
-
-        //Creational
-        //1
-        private static T GetSingleton<T>() 
-            where T : class, new() 
-                => Singleton<T>.GetInstance();
-    }
-
-    internal class MyTestClass
-    {
-        public string? MyProp { get; set; }
-
-        public string? MyMethod() => this.MyProp;
     }
 }
