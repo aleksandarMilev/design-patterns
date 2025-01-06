@@ -4,6 +4,7 @@
     using Creational.Builder;
     using Creational.FactoryMethod.Factories;
     using Creational.FluentInterface;
+    using Creational.ObjectPool;
     using Creational.Prototype;
     using Creational.SimpleFactory;
     using SingletonPattern = Creational.Singleton;
@@ -20,6 +21,7 @@
             Builder();
             Prototype();
             FluentInterface();
+            ObjectPool();
         }
 
         static void Singleton()
@@ -109,6 +111,28 @@
                 .Build();
 
             Console.WriteLine(person);
+
+            Console.WriteLine();
+        }
+
+        static void ObjectPool()
+        {
+            Console.WriteLine("Object Pool example:");
+
+            var pool = new ObjectPool<Connection>(() => new Connection("MyConnectionString"));
+
+            var connection1 = pool.Rent();
+            connection1.Open();
+
+            var connection2 = pool.Rent();
+            connection2.Open();
+
+            pool.Return(connection1);
+            pool.Return(connection1);
+
+            var connection3 = pool.Rent();
+            connection3.Open();
+            pool.Return(connection3);
 
             Console.WriteLine();
         }
