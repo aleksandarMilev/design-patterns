@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Creational.SimpleFactory.Example
+﻿namespace DesignPatterns.Creational.SimpleFactory
 {
     public enum PizzaSize
     {

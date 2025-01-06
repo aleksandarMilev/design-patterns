@@ -1,15 +1,27 @@
 ﻿namespace DesignPatterns.Creational.Singleton
 {
-    public sealed class Singleton<T> 
-        where T : class
+    public sealed class Singleton
     {
-        private static T? value;
+        private static Singleton value = new();
         private readonly static object lockObj = new();
 
         private Singleton() { }
 
-        public static T GetInstance(Func<T> factoryMethod)
+        public static Singleton GetInstance(Func<Singleton>? factoryMethod = null)
         {
+            if (factoryMethod is null)
+            {
+                if (value is null)
+                {
+                    lock (lockObj)
+                    {
+                        value ??= new();
+                    }
+                }
+
+                return value;
+            }
+
             if (value is null)
             {
                 lock (lockObj)
@@ -20,5 +32,7 @@
 
             return value;
         }
+
+        public override string ToString() => "I am Singleton";
     }
 }
