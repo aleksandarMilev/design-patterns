@@ -3,8 +3,9 @@
     using Creational.AbstractFactory.Factories;
     using Creational.Builder;
     using Creational.FactoryMethod.Factories;
+    using Creational.FluentInterface;
+    using Creational.Prototype;
     using Creational.SimpleFactory;
-    using DesignPatterns.Creational.Prototype;
     using SingletonPattern = Creational.Singleton;
 
     internal class Program
@@ -18,6 +19,7 @@
             AbstractFactory();
             Builder();
             Prototype();
+            FluentInterface();
         }
 
         static void Singleton()
@@ -85,9 +87,28 @@
         {
             Console.WriteLine("Prototype example:");
 
-            var original = new MyPrototype("SomeString", 42, new());
+            var original = new MyPrototype();
+            Console.WriteLine("The Original is: " + original);
+
             var copy = original.Clone();
-            Console.WriteLine(copy);
+            Console.WriteLine("The Copy is: " + copy);
+
+            Console.WriteLine();
+        }
+
+        static void FluentInterface()
+        {
+            Console.WriteLine("Fluent Interface example:");
+
+            var person = new PersonBuilder()
+                .HasFirstName("John")
+                .HasLastName("Doe")
+                .HasAge(26)
+                .HasGender("female")
+                .IsStudent(false)
+                .Build();
+
+            Console.WriteLine(person);
 
             Console.WriteLine();
         }
