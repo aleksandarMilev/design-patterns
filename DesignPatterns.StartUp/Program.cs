@@ -4,6 +4,7 @@
     using Creational.Builder;
     using Creational.FactoryMethod.Factories;
     using Creational.SimpleFactory;
+    using DesignPatterns.Creational.Prototype;
     using SingletonPattern = Creational.Singleton;
 
     internal class Program
@@ -75,14 +76,20 @@
             var builder = new MyCarBuilder();
             var director = new CarDirector(builder);
             var car = director.BuildCar();
-
             Console.WriteLine(car);
+
             Console.WriteLine();
         }
 
         static void Prototype()
         {
-            
+            Console.WriteLine("Prototype example:");
+
+            var original = new MyPrototype("SomeString", 42, new());
+            var copy = original.Clone();
+            Console.WriteLine(copy);
+
+            Console.WriteLine();
         }
     }
 }
