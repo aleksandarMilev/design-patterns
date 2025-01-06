@@ -2,7 +2,7 @@
 {
     using Products;
 
-    public interface IDocumentFactory
+    public interface ISimpleDocumentFactory
     {
         IDocument GetDocument();
     }

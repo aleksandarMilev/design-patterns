@@ -2,7 +2,7 @@
 {
     using Products;
 
-    public class PdfFactory : IDocumentFactory
+    public class PdfFactory : ISimpleDocumentFactory
     {
         public IDocument GetDocument() => new PdfDocument();
     }

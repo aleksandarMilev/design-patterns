@@ -2,7 +2,7 @@
 {
     using Products;
 
-    public class WordFactory : IDocumentFactory
+    public class WordFactory : ISimpleDocumentFactory
     {
         public IDocument GetDocument() => new WordDocument();
     }
