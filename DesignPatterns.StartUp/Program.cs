@@ -1,8 +1,10 @@
 ﻿namespace DesignPatterns.StartUp
 {
     using Creational.AbstractFactory.Factories;
+    using Creational.Builder;
     using Creational.FactoryMethod.Factories;
     using Creational.SimpleFactory;
+    using SingletonPattern = Creational.Singleton;
 
     internal class Program
     {
@@ -13,13 +15,15 @@
             SimpleFactory();
             FactoryMethod();
             AbstractFactory();
+            Builder();
+            Prototype();
         }
 
         static void Singleton()
         {
             Console.WriteLine("Singleton example:");
 
-            var singleton = Creational.Singleton.Singleton.GetInstance();
+            var singleton = SingletonPattern.Singleton.GetInstance();
             Console.WriteLine(singleton);
 
             Console.WriteLine();
@@ -62,6 +66,23 @@
             }
 
             Console.WriteLine();
+        }
+
+        static void Builder()
+        {
+            Console.WriteLine("Builder example:");
+
+            var builder = new MyCarBuilder();
+            var director = new CarDirector(builder);
+            var car = director.BuildCar();
+
+            Console.WriteLine(car);
+            Console.WriteLine();
+        }
+
+        static void Prototype()
+        {
+            
         }
     }
 }
