@@ -9,7 +9,7 @@
         public string? MyMethod() => this.MyProp;
 
         public static MySingletonClass GetSingleton() 
-            => Singleton<MySingletonClass>.GetInstance(() => new MySingletonClass("myProp"));
+            => Singleton<MySingletonClass>.GetInstance(() => new MySingletonClass("I am singleton"));
 
         public override string? ToString() => this.MyProp;
     }
