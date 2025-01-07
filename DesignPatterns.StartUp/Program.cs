@@ -8,6 +8,9 @@
     using Creational.ObjectPool;
     using Creational.Prototype;
     using Creational.SimpleFactory;
+    using DesignPatterns.Structural.Flyweight;
+    using Structural.Composite.Composite;
+    using Structural.Composite.Leaf;
     using Structural.Facade;
 
     internal class Program
@@ -27,6 +30,8 @@
 
             //Structural
             Facade();
+            Composite();
+            Flyweight();
         }
 
         static void Singleton()
@@ -164,6 +169,49 @@
                 fromAccount: 1, 
                 toAccount: 2, 
                 amount: 3000);
+
+            Console.WriteLine();
+        }
+
+        static void Composite()
+        {
+            Console.WriteLine("Composite example:");
+
+            var file1 = new MyFile("File1.txt");
+            var file2 = new MyFile("File2.txt");
+            var file3 = new MyFile("File3.txt");
+
+            var rootDirectory = new MyDirectory("Root");
+            var subDirectory1 = new MyDirectory("SubDirectory1");
+            var subDirectory2 = new MyDirectory("SubDirectory2");
+
+            rootDirectory.Add(file1);
+            rootDirectory.Add(subDirectory1);
+            subDirectory1.Add(file2);
+            subDirectory2.Add(file3);
+            rootDirectory.Add(subDirectory2);
+
+            rootDirectory.Display(1);
+
+            Console.WriteLine();
+        }
+
+        static void Flyweight()
+        {
+            Console.WriteLine("Flyweight example:'");
+
+            var treeFactory = new TreeFactory();
+
+            var oakType = treeFactory.GetTreeType("Oak");
+            oakType.Display(1, 2);
+            oakType.Display(3, 5);
+
+            var pineType = treeFactory.GetTreeType("Pine");
+            pineType.Display(4, 6);
+            pineType.Display(7, 8);
+
+            var oakTypeAgain = treeFactory.GetTreeType("Oak");
+            oakTypeAgain.Display(9, 10);
 
             Console.WriteLine();
         }
