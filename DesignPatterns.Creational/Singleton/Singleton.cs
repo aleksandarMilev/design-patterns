@@ -3,7 +3,7 @@
     public sealed class Singleton
     {
         private static Singleton value = new();
-        private readonly static object lockObj = new();
+        private static readonly object lockObj = new();
 
         private Singleton() { }
 

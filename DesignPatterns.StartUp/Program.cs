@@ -4,10 +4,10 @@
     using Creational.Builder;
     using Creational.FactoryMethod.Factories;
     using Creational.FluentInterface;
+    using Creational.LazyInitialization;
     using Creational.ObjectPool;
     using Creational.Prototype;
     using Creational.SimpleFactory;
-    using SingletonPattern = Creational.Singleton;
 
     internal class Program
     {
@@ -22,13 +22,14 @@
             Prototype();
             FluentInterface();
             ObjectPool();
+            Lazy();
         }
 
         static void Singleton()
         {
             Console.WriteLine("Singleton example:");
 
-            var singleton = SingletonPattern.Singleton.GetInstance();
+            var singleton = Creational.Singleton.Singleton.GetInstance();
             Console.WriteLine(singleton);
 
             Console.WriteLine();
@@ -135,6 +136,13 @@
             pool.Return(connection3);
 
             Console.WriteLine();
+        }
+
+        static void Lazy()
+        {
+            var lazyLoader = new LazyLoader();
+            var resource = lazyLoader.Resource;
+            resource.DoWork();
         }
     }
 }
