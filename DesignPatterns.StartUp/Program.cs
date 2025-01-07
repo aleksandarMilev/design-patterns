@@ -8,6 +8,7 @@
     using Creational.ObjectPool;
     using Creational.Prototype;
     using Creational.SimpleFactory;
+    using Structural.Facade;
 
     internal class Program
     {
@@ -23,6 +24,9 @@
             FluentInterface();
             ObjectPool();
             Lazy();
+
+            //Structural
+            Facade();
         }
 
         static void Singleton()
@@ -140,9 +144,28 @@
 
         static void Lazy()
         {
+            Console.WriteLine("Lazy example:");
+
             var lazyLoader = new LazyLoader();
             var resource = lazyLoader.Resource;
             resource.DoWork();
+
+            Console.WriteLine();
+        }
+
+        static void Facade()
+        {
+            Console.WriteLine("Facade example:");
+
+            var bankFacade = new BankFacade();
+            bankFacade.TransferMoney(
+                userId: 1234, 
+                password: "password", 
+                fromAccount: 1, 
+                toAccount: 2, 
+                amount: 3000);
+
+            Console.WriteLine();
         }
     }
 }
