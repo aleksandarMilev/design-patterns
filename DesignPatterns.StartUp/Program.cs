@@ -3,6 +3,7 @@
     using Behavioral.ChainOfResponsibility;
     using Behavioral.Command;
     using Behavioral.Iterator;
+    using Behavioral.Strategy;
     using Behavioral.TemplateMethod;
     using Creational.AbstractFactory.Factories;
     using Creational.Builder;
@@ -50,6 +51,7 @@
             Iterator();
             Command();
             TemplateMethod();
+            Strategy();
         }
 
         private static void Singleton()
@@ -380,6 +382,22 @@
             CoffeeTemplate dripCoffee = new Decaf();
             Console.WriteLine("Making Drip Coffee:");
             dripCoffee.MakeCoffee();
+
+            Console.WriteLine();
+        }
+
+        private static void Strategy()
+        {
+            Console.WriteLine("Strategy example:\r\n");
+
+            var originalPrice = 100.0;
+            Console.WriteLine($"Original Price: ${originalPrice}\r\n");
+
+            var loyaltyCart = new ShoppingCart(new LoyaltyDiscount());
+            Console.WriteLine($"Price after Loyalty Discount: ${loyaltyCart.CalculateFinalPrice(originalPrice)}\n");
+
+            var newUserCart = new ShoppingCart(new NewUserDiscount());
+            Console.WriteLine($"Price after New User Discount: ${newUserCart.CalculateFinalPrice(originalPrice)}");
 
             Console.WriteLine();
         }
