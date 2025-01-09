@@ -10,6 +10,7 @@
     using Creational.SimpleFactory;
     using Structural.Composite.Composite;
     using Structural.Composite.Leaf;
+    using Structural.Decorator;
     using Structural.Facade;
     using Structural.Flyweight;
     using Structural.Proxy;
@@ -34,9 +35,10 @@
             Composite();
             Flyweight();
             Proxy();
+            Decorator();
         }
 
-        static void Singleton()
+        private static void Singleton()
         {
             Console.WriteLine("Singleton example:");
 
@@ -46,7 +48,7 @@
             Console.WriteLine();
         }
 
-        static void SimpleFactory()
+        private static void SimpleFactory()
         {
             Console.WriteLine("Simple Factory example:");
 
@@ -56,7 +58,7 @@
             Console.WriteLine();
         }
 
-        static void FactoryMethod()
+        private static void FactoryMethod()
         {
             Console.WriteLine("Factory Method example:");
 
@@ -70,7 +72,7 @@
             Console.WriteLine();
         }
 
-        static void AbstractFactory()
+        private static void AbstractFactory()
         {
             Console.WriteLine("Abstract Factory example:");
 
@@ -85,7 +87,7 @@
             Console.WriteLine();
         }
 
-        static void Builder()
+        private static void Builder()
         {
             Console.WriteLine("Builder example:");
 
@@ -97,7 +99,7 @@
             Console.WriteLine();
         }
 
-        static void Prototype()
+        private static void Prototype()
         {
             Console.WriteLine("Prototype example:");
 
@@ -110,7 +112,7 @@
             Console.WriteLine();
         }
 
-        static void FluentInterface()
+        private static void FluentInterface()
         {
             Console.WriteLine("Fluent Interface example:");
 
@@ -127,7 +129,7 @@
             Console.WriteLine();
         }
 
-        static void ObjectPool()
+        private static void ObjectPool()
         {
             Console.WriteLine("Object Pool example:");
 
@@ -149,7 +151,7 @@
             Console.WriteLine();
         }
 
-        static void Lazy()
+        private static void Lazy()
         {
             Console.WriteLine("Lazy example:");
 
@@ -160,7 +162,7 @@
             Console.WriteLine();
         }
 
-        static void Facade()
+        private static void Facade()
         {
             Console.WriteLine("Facade example:");
 
@@ -175,7 +177,7 @@
             Console.WriteLine();
         }
 
-        static void Composite()
+        private static void Composite()
         {
             Console.WriteLine("Composite example:");
 
@@ -197,7 +199,7 @@
             Console.WriteLine();
         }
 
-        static void Flyweight()
+        private static void Flyweight()
         {
             Console.WriteLine("Flyweight example:'");
 
@@ -217,7 +219,7 @@
             Console.WriteLine();
         }
 
-        static void Proxy()
+        private static void Proxy()
         {
             Console.WriteLine("Proxy example:");
 
@@ -225,6 +227,22 @@
 
             dbProxy.Get("SELECT * FROM People");
             dbProxy.Get("SELECT * FROM People");
+
+            Console.WriteLine();
+        }
+
+        private static void Decorator()
+        {
+            Console.WriteLine("Decorator example");
+
+            ICoffee coffee = new Coffee();
+            Console.WriteLine(coffee);
+
+            coffee = new MilkDecorator(coffee);
+            Console.WriteLine(coffee);
+
+            coffee = new DecafDecorator(coffee);
+            Console.WriteLine(coffee);
 
             Console.WriteLine();
         }
