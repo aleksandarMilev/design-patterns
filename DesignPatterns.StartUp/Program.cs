@@ -1,6 +1,7 @@
 ﻿namespace DesignPatterns.StartUp
 {
     using Behavioral.ChainOfResponsibility;
+    using Behavioral.Command;
     using Behavioral.Iterator;
     using Creational.AbstractFactory.Factories;
     using Creational.Builder;
@@ -46,11 +47,12 @@
             //Behavioral
             ChainOfResponsibility();
             Iterator();
+            Command();
         }
 
         private static void Singleton()
         {
-            Console.WriteLine("Singleton example:");
+            Console.WriteLine("Singleton example:\r\n");
 
             var singleton = Creational.Singleton.Singleton.GetInstance();
             Console.WriteLine(singleton);
@@ -60,7 +62,7 @@
 
         private static void SimpleFactory()
         {
-            Console.WriteLine("Simple Factory example:");
+            Console.WriteLine("Simple Factory example:\r\n");
 
             var pizza = PizzaFactory.Create();
             Console.WriteLine(pizza);
@@ -70,7 +72,7 @@
 
         private static void FactoryMethod()
         {
-            Console.WriteLine("Factory Method example:");
+            Console.WriteLine("Factory Method example:\r\n");
 
             List<ISimpleDocumentFactory> factories = [ new PdfFactory(), new WordFactory() ];
 
@@ -84,7 +86,7 @@
 
         private static void AbstractFactory()
         {
-            Console.WriteLine("Abstract Factory example:");
+            Console.WriteLine("Abstract Factory example:\r\n");
 
             List<IAbstractDocumentFactory> factories = [ new MyDocumentFactory(), new OtherDocumentFactory() ];
 
@@ -99,7 +101,7 @@
 
         private static void Builder()
         {
-            Console.WriteLine("Builder example:");
+            Console.WriteLine("Builder example:\r\n");
 
             var builder = new MyCarBuilder();
             var director = new CarDirector(builder);
@@ -111,7 +113,7 @@
 
         private static void Prototype()
         {
-            Console.WriteLine("Prototype example:");
+            Console.WriteLine("Prototype example:\r\n");
 
             var original = new MyPrototype();
             Console.WriteLine("The Original is: " + original);
@@ -124,7 +126,7 @@
 
         private static void FluentInterface()
         {
-            Console.WriteLine("Fluent Interface example:");
+            Console.WriteLine("Fluent Interface example:\r\n");
 
             var person = new PersonBuilder()
                 .HasFirstName("John")
@@ -141,7 +143,7 @@
 
         private static void ObjectPool()
         {
-            Console.WriteLine("Object Pool example:");
+            Console.WriteLine("Object Pool example:\r\n");
 
             var pool = new ObjectPool<Connection>(() => new Connection("MyConnectionString"));
 
@@ -163,7 +165,7 @@
 
         private static void Lazy()
         {
-            Console.WriteLine("Lazy example:");
+            Console.WriteLine("Lazy example:\r\n");
 
             var lazyLoader = new LazyLoader();
             var resource = lazyLoader.Resource;
@@ -174,7 +176,7 @@
 
         private static void Facade()
         {
-            Console.WriteLine("Facade example:");
+            Console.WriteLine("Facade example:\r\n");
 
             var bankFacade = new BankFacade();
             bankFacade.TransferMoney(
@@ -189,7 +191,7 @@
 
         private static void Composite()
         {
-            Console.WriteLine("Composite example:");
+            Console.WriteLine("Composite example:\r\n");
 
             var file1 = new MyFile("File1.txt");
             var file2 = new MyFile("File2.txt");
@@ -211,7 +213,7 @@
 
         private static void Flyweight()
         {
-            Console.WriteLine("Flyweight example:'");
+            Console.WriteLine("Flyweight example:\r\n");
 
             var treeFactory = new TreeFactory();
 
@@ -231,7 +233,7 @@
 
         private static void Proxy()
         {
-            Console.WriteLine("Proxy example:");
+            Console.WriteLine("Proxy example:\r\n");
 
             IDatabase<PersonDbModel> dbProxy = new ProxyDatabase<PersonDbModel>();
 
@@ -243,7 +245,7 @@
 
         private static void Decorator()
         {
-            Console.WriteLine("Decorator example:");
+            Console.WriteLine("Decorator example:\r\n");
 
             ICoffee coffee = new Coffee();
             Console.WriteLine(coffee);
@@ -259,7 +261,7 @@
 
         private static void Adapter()
         {
-            Console.WriteLine("Adapter example:");
+            Console.WriteLine("Adapter example:\r\n");
 
             var payPalPayment = new PayPalPayment();
             IPaymentProcessor payPalProcessor = new PayPalAdapter(payPalPayment);
@@ -270,7 +272,7 @@
 
         private static void Bridge()
         {
-            Console.WriteLine("Bridge example:");
+            Console.WriteLine("Bridge example:\r\n");
 
             IDevice tv = new TV();
             IDevice airConditioner = new AirConditioner();
@@ -292,7 +294,7 @@
 
         private static void ChainOfResponsibility()
         {
-            Console.WriteLine("Chain Of Responsibility example:");
+            Console.WriteLine("Chain Of Responsibility example:\r\n");
 
             var lowLevelSupport = new LowLevelSupportAgent();
             var mediumLevelSupport = new MediumLevelSupportAgent();
@@ -301,7 +303,7 @@
             lowLevelSupport.SetNext(mediumLevelSupport);
             mediumLevelSupport.SetNext(highLevelSupport);
 
-            Console.WriteLine("\nClient: Requesting a 'Login Issue'.");
+            Console.WriteLine("Client: Requesting a 'Login Issue'.");
             lowLevelSupport.HandleRequest("Login Issue");
 
             Console.WriteLine("\nClient: Requesting a 'Password Recovery'.");
@@ -318,7 +320,7 @@
 
         private static void Iterator()
         {
-            Console.WriteLine("Iterator example:");
+            Console.WriteLine("Iterator example:\r\n");
 
             var doc1 = new Document("Doc1", "PDF");
             var doc2 = new Document("Doc2", "Word");
@@ -336,6 +338,29 @@
                 var document = iterator.Next();
                 document.Display();
             }
+
+            Console.WriteLine();
+        }
+
+        private static void Command()
+        {
+            Console.WriteLine("Command example:\r\n");
+
+            var light = new Light();
+
+            var lightOn = new LightOnCommand(light);
+            var lightOff = new LightOffCommand(light);
+
+            var remoteControl = new LightRemoteControl();
+
+            remoteControl.SetCommand(lightOn);
+            remoteControl.PressButton();  
+
+            remoteControl.SetCommand(lightOff);
+            remoteControl.PressButton();  
+
+            remoteControl.PressUndo();  
+            remoteControl.PressUndo();
 
             Console.WriteLine();
         }
