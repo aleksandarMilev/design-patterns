@@ -1,5 +1,6 @@
 ﻿namespace DesignPatterns.StartUp
 {
+    using Behavioral.ChainOfResponsibility;
     using Creational.AbstractFactory.Factories;
     using Creational.Builder;
     using Creational.FactoryMethod.Factories;
@@ -40,6 +41,9 @@
             Decorator();
             Adapter();
             Bridge();
+
+            //Behavioral
+            ChainOfResponsibility();
         }
 
         private static void Singleton()
@@ -280,6 +284,32 @@
 
             tvRemote.TurnOff();
             acRemote.TurnOff();
+
+            Console.WriteLine();
+        }
+
+        private static void ChainOfResponsibility()
+        {
+            Console.WriteLine("Chain Of Responsibility example:");
+
+            var lowLevelSupport = new LowLevelSupportAgent();
+            var mediumLevelSupport = new MediumLevelSupportAgent();
+            var highLevelSupport = new HighLevelSupportAgent();
+
+            lowLevelSupport.SetNext(mediumLevelSupport);
+            mediumLevelSupport.SetNext(highLevelSupport);
+
+            Console.WriteLine("\nClient: Requesting a 'Login Issue'.");
+            lowLevelSupport.HandleRequest("Login Issue");
+
+            Console.WriteLine("\nClient: Requesting a 'Password Recovery'.");
+            lowLevelSupport.HandleRequest("Password Recovery");
+
+            Console.WriteLine("\nClient: Requesting a 'System Crash'.");
+            lowLevelSupport.HandleRequest("System Crash");
+
+            Console.WriteLine("\nClient: Requesting an 'Unknown Issue'.");
+            lowLevelSupport.HandleRequest("Unknown Issue");
 
             Console.WriteLine();
         }
