@@ -9,6 +9,7 @@
     using Creational.Prototype;
     using Creational.SimpleFactory;
     using Structural.Adapter;
+    using Structural.Bridge;
     using Structural.Composite.Composite;
     using Structural.Composite.Leaf;
     using Structural.Decorator;
@@ -37,6 +38,8 @@
             Flyweight();
             Proxy();
             Decorator();
+            Adapter();
+            Bridge();
         }
 
         private static void Singleton()
@@ -255,6 +258,28 @@
             var payPalPayment = new PayPalPayment();
             IPaymentProcessor payPalProcessor = new PayPalAdapter(payPalPayment);
             payPalProcessor.ProcessPayment(1_000);
+
+            Console.WriteLine();
+        }
+
+        private static void Bridge()
+        {
+            Console.WriteLine("Bridge example:");
+
+            IDevice tv = new TV();
+            IDevice airConditioner = new AirConditioner();
+
+            RemoteControl tvRemote = new TVRemoteControl(tv);
+            RemoteControl acRemote = new AirConditionerRemoteControl(airConditioner);
+
+            tvRemote.TurnOn();
+            tvRemote.SetVolume(10);
+
+            acRemote.TurnOn();
+            acRemote.SetVolume(5);
+
+            tvRemote.TurnOff();
+            acRemote.TurnOff();
 
             Console.WriteLine();
         }
