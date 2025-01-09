@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Behavioral", "Behavioral", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StartUp", "StartUp", "{8AD9C5BA-0C9D-48C2-BC42-045BA628675E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Creational", "DesignPatterns.Creational\DesignPatterns.Creational.csproj", "{CC6D9D97-32A2-4018-ADB3-9990348D9451}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Creational", "DesignPatterns.Creational\DesignPatterns.Creational.csproj", "{CC6D9D97-32A2-4018-ADB3-9990348D9451}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Behavioral", "DesignPatterns.Behavioral\DesignPatterns.Behavioral.csproj", "{EB90071A-B598-4B63-A005-DC4C18FC5215}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Behavioral", "DesignPatterns.Behavioral\DesignPatterns.Behavioral.csproj", "{EB90071A-B598-4B63-A005-DC4C18FC5215}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Structural", "DesignPatterns.Structural\DesignPatterns.Structural.csproj", "{995C30B2-8937-4D4B-9A11-3B711A6247C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Structural", "DesignPatterns.Structural\DesignPatterns.Structural.csproj", "{995C30B2-8937-4D4B-9A11-3B711A6247C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.StartUp", "DesignPatterns.StartUp\DesignPatterns.StartUp.csproj", "{A4F325D7-9B79-4CB0-AA1B-535D1ED5F532}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.StartUp", "DesignPatterns.StartUp\DesignPatterns.StartUp.csproj", "{A4F325D7-9B79-4CB0-AA1B-535D1ED5F532}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

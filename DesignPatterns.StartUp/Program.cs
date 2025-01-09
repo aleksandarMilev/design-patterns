@@ -8,6 +8,7 @@
     using Creational.ObjectPool;
     using Creational.Prototype;
     using Creational.SimpleFactory;
+    using Structural.Adapter;
     using Structural.Composite.Composite;
     using Structural.Composite.Leaf;
     using Structural.Decorator;
@@ -233,7 +234,7 @@
 
         private static void Decorator()
         {
-            Console.WriteLine("Decorator example");
+            Console.WriteLine("Decorator example:");
 
             ICoffee coffee = new Coffee();
             Console.WriteLine(coffee);
@@ -243,6 +244,17 @@
 
             coffee = new DecafDecorator(coffee);
             Console.WriteLine(coffee);
+
+            Console.WriteLine();
+        }
+
+        private static void Adapter()
+        {
+            Console.WriteLine("Adapter example:");
+
+            var payPalPayment = new PayPalPayment();
+            IPaymentProcessor payPalProcessor = new PayPalAdapter(payPalPayment);
+            payPalProcessor.ProcessPayment(1_000);
 
             Console.WriteLine();
         }
