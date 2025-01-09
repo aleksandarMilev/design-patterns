@@ -8,10 +8,11 @@
     using Creational.ObjectPool;
     using Creational.Prototype;
     using Creational.SimpleFactory;
-    using DesignPatterns.Structural.Flyweight;
     using Structural.Composite.Composite;
     using Structural.Composite.Leaf;
     using Structural.Facade;
+    using Structural.Flyweight;
+    using Structural.Proxy;
 
     internal class Program
     {
@@ -32,6 +33,7 @@
             Facade();
             Composite();
             Flyweight();
+            Proxy();
         }
 
         static void Singleton()
@@ -192,7 +194,6 @@
             rootDirectory.Add(subDirectory2);
 
             rootDirectory.Display(1);
-
             Console.WriteLine();
         }
 
@@ -212,6 +213,18 @@
 
             var oakTypeAgain = treeFactory.GetTreeType("Oak");
             oakTypeAgain.Display(9, 10);
+
+            Console.WriteLine();
+        }
+
+        static void Proxy()
+        {
+            Console.WriteLine("Proxy example:");
+
+            IDatabase<PersonDbModel> dbProxy = new ProxyDatabase<PersonDbModel>();
+
+            dbProxy.Get("SELECT * FROM People");
+            dbProxy.Get("SELECT * FROM People");
 
             Console.WriteLine();
         }
