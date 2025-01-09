@@ -1,6 +1,7 @@
 ﻿namespace DesignPatterns.StartUp
 {
     using Behavioral.ChainOfResponsibility;
+    using Behavioral.Iterator;
     using Creational.AbstractFactory.Factories;
     using Creational.Builder;
     using Creational.FactoryMethod.Factories;
@@ -44,6 +45,7 @@
 
             //Behavioral
             ChainOfResponsibility();
+            Iterator();
         }
 
         private static void Singleton()
@@ -310,6 +312,30 @@
 
             Console.WriteLine("\nClient: Requesting an 'Unknown Issue'.");
             lowLevelSupport.HandleRequest("Unknown Issue");
+
+            Console.WriteLine();
+        }
+
+        private static void Iterator()
+        {
+            Console.WriteLine("Iterator example:");
+
+            var doc1 = new Document("Doc1", "PDF");
+            var doc2 = new Document("Doc2", "Word");
+            var doc3 = new Document("Doc3", "Text");
+
+            var collection = new DocumentCollection();
+            collection.AddDocument(doc1);
+            collection.AddDocument(doc2);
+            collection.AddDocument(doc3);
+
+            var iterator = collection.GetIterator();
+
+            while (iterator.HasNext())
+            {
+                var document = iterator.Next();
+                document.Display();
+            }
 
             Console.WriteLine();
         }
