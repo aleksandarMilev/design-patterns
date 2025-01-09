@@ -3,6 +3,7 @@
     using Behavioral.ChainOfResponsibility;
     using Behavioral.Command;
     using Behavioral.Iterator;
+    using Behavioral.TemplateMethod;
     using Creational.AbstractFactory.Factories;
     using Creational.Builder;
     using Creational.FactoryMethod.Factories;
@@ -48,6 +49,7 @@
             ChainOfResponsibility();
             Iterator();
             Command();
+            TemplateMethod();
         }
 
         private static void Singleton()
@@ -361,6 +363,23 @@
 
             remoteControl.PressUndo();  
             remoteControl.PressUndo();
+
+            Console.WriteLine();
+        }
+
+        private static void TemplateMethod()
+        {
+            Console.WriteLine("Template Method example:\r\n");
+
+            CoffeeTemplate espresso = new Espresso();
+            Console.WriteLine("Making Espresso:");
+            espresso.MakeCoffee();
+
+            Console.WriteLine();
+
+            CoffeeTemplate dripCoffee = new Decaf();
+            Console.WriteLine("Making Drip Coffee:");
+            dripCoffee.MakeCoffee();
 
             Console.WriteLine();
         }
